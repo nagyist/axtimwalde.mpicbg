@@ -81,14 +81,12 @@ final public class IntIntegralImage implements IntegralImage
 		}
 
 		/* columns */
-		final int[] columnSum = new int[width];
-		for (int j = 1; j < w; ++j) {
-			final int offset = j * w + 1;
+		for (int j = 1; j < h; ++j) {
+			final int rowOffset = j * w + 1;
+			final int prevRowOffset = rowOffset - w;
 
-			for (int i = 0; i < height; ++i) {
-				final int index = offset + i;
-				columnSum[i] += sum[index];
-				sum[index] = columnSum[i];
+			for (int i = 0; i < width; ++i) {
+				sum[rowOffset + i] += sum[prevRowOffset + i];
 			}
 		}
 	}
@@ -136,14 +134,12 @@ final public class IntIntegralImage implements IntegralImage
 		}
 
 		/* columns */
-		final int[] columnSum = new int[width];
-		for (int j = 1; j < w; ++j) {
-			final int offset = j * w + 1;
+		for (int j = 1; j < h; ++j) {
+			final int rowOffset = j * w + 1;
+			final int prevRowOffset = rowOffset - w;
 
-			for (int i = 0; i < height; ++i) {
-				final int index = offset + i;
-				columnSum[i] += sum[index];
-				sum[index] = columnSum[i];
+			for (int i = 0; i < width; ++i) {
+				sum[rowOffset + i] += sum[prevRowOffset + i];
 			}
 		}
 	}
